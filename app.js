@@ -1,5 +1,30 @@
 'use strict'
 
+var fs=require('fs')//文件管理
+var path=require('path')//路径
+var mongoose=require('mongoose')
+var db='mongodb://localhost/gogoshuo'
+mongoose.Promise=require('bluebird')//使用bluebird来作为mongodb内置的Promise
+mongoose.connect(db)//链接数据库
+var models_path=path.join(__dirname,'/app/models')//定义模型路径  __dirname当前目录，需要拿到的路径
+
+var walk=function(modelsPath){
+	fs
+		.readdirSync(modelsPath)
+		.forEach(function(file){
+			var filePath=path.join(modelsPath,'/'+file)
+			var stat=fs.statSync(filePath)
+			if(stat.isFlie()){
+				if(/(.*)\.(js|coffee)/.test(file)){
+					require(filePath)
+				}
+			}else if(stat.isDirectory()){
+				walk(filePath)
+			}
+		})
+}
+walk(models_path)
+
 var koa=require('koa')
 var logger=require('koa-logger')//日志中间件
 var session=require('koa-session')//会话中间件
