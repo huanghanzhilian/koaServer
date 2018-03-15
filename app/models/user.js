@@ -1,17 +1,16 @@
-'use strict'
+//'use strict'
 
 var mongoose=require('mongoose')
-
 //定义字段
 var UserSchema =new mongoose.Schema({
-	phoneNumber:{//手机号
-		unique:true,//唯一性 如果有重复就会报错
-		ttype:String
+	phoneNumber:{
+		unique:true,
+		type:String
 	},
-	areaCode:String,//区号
-	verifyCode:String,//验证码
-	accessToken:String,//用户票据 通过票据判定用户合法性是否注册登录了
-	nickname:String,//用户昵称
+	areaCode:String,
+	verifyCode:String,
+	accessToken:String,
+	nickname:String,
 	gender:String,//用户性别
 	breed:String,//品种
 	age:String,//年龄
@@ -31,10 +30,13 @@ var UserSchema =new mongoose.Schema({
 //存储前，牵制的一些逻辑
 //pre 在存储以前有一个回调函数
 UserSchema.pre('save',function(next){
-	//如果不是一条新数据
-	if(!this.isNew){
+	//如果是一条新数据
+	if(this.isNew){
+		this.meta.createAt=this.meta.updateAt=Date.now()
+	}else{
 		this.meta.updateAt=Date.now()
 	}
+	next()
 })
 
 //进行建模
