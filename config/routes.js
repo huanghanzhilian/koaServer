@@ -9,7 +9,7 @@ module.exports=function(){
 		prefix:'/api/1'//定义前缀
 	})
 	//user
-	router.get('/u/signup',User.signup)
+	router.post('/u/signup',User.signup)
 	router.post('/u/verify',User.verify)
 	router.post('/u/update',User.update)
 
