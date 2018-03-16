@@ -92,18 +92,8 @@ exports.verify=function *(next){
 //更新用户信息
 exports.update=function *(next){
 	var body=this.request.body
-	var accessToken=body.accessToken
-	var user=yield User.findOne({
-		accessToken:accessToken
-	}).exec()
-
-	if(!user){
-		this.body={
-			success:false,
-			err:'用户不见了'
-		}
-		return next
-	}
+	
+	var user=this.session.user
 
 	var fields='avatar,gender,age,nickname,breed'.split(',')
 	fields.forEach(function(field){

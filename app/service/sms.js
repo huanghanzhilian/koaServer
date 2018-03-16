@@ -8,7 +8,7 @@ var speakeasy=require('speakeasy')//生成验证码
 
 //生成验证码r
 exports.getCode=function(){
-  var code=speakeasy.titp({
+  var code=speakeasy.totp({
     secret:'huang',//私钥
     digits:4//位数
   })
