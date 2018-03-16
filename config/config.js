@@ -11,7 +11,7 @@ module.exports={
 	  audio:"https://api.cloudinary.com/v1_1/de5fw2yto/audio/upload",//上传图片地址
 	},
 	qiniu:{
-		AK:'6zLGvA2rTZuHqkjC4gTZhht7f6q1_JrjT1rOB_hO',
-		SK:'frHZz3QQTTEBuIrC7sTXNOzT-j5c3EPCMJbCfC3Z'
+		AK:'cLSEU0YNM_ZJiMax9Pc6d_N7nnhMGGz9D95lFrN-',
+		SK:'0C3GyKJfUxZlBlRYEAJ2AsipjW95alXkC_MW6kto'
 	}
 }

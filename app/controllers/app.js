@@ -3,20 +3,26 @@
 var mongoose=require('mongoose')
 var User=mongoose.model('User')
 var robot=require('../service/robot')
+var uuid=require('uuid')
 
 //上传图片签名
 exports.signature=function *(next){
 	var body =this.request.body //post参数
-	var key=body.key
+	var cloud=body.cloud
 	var token
-	if(key){
+	var key
+	if(cloud==='qiniu'){
+		key=uuid.v4()+'.png'
 		token=robot.getQiniuToken(key)
 	}else{
 		token=robot.getCloudinaryToken(body)
 	}
 	this.body={
 		success:true,
-		data:token
+		data:{
+			token:token,
+			key:key
+		}
 	}
 }
 

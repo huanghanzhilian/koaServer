@@ -6,9 +6,8 @@ var sha1=require('sha1')
 
 qiniu.conf.ACCESS_KEY = config.qiniu.AK
 qiniu.conf.SECRET_KEY = config.qiniu.SK
-
 //要上传的空间
-bucket = 'gougouavatar';
+var bucket = 'gougouavarat';
 
 //构建上传策略函数
 function uptoken(bucket, key) {
