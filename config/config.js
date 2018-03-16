@@ -9,5 +9,9 @@ module.exports={
 	  image:"https://api.cloudinary.com/v1_1/de5fw2yto/image/upload",//上传图片地址
 	  video:"https://api.cloudinary.com/v1_1/de5fw2yto/video/upload",//上传视频地址
 	  audio:"https://api.cloudinary.com/v1_1/de5fw2yto/audio/upload",//上传图片地址
+	},
+	qiniu:{
+		AK:'6zLGvA2rTZuHqkjC4gTZhht7f6q1_JrjT1rOB_hO',
+		SK:'frHZz3QQTTEBuIrC7sTXNOzT-j5c3EPCMJbCfC3Z'
 	}
 }
