@@ -6,7 +6,7 @@ var App=require('../app/controllers/app')
 
 module.exports=function(){
 	var router=new Router({
-		prefix:'/api/1'//定义前缀
+		prefix:'/api'//定义前缀
 	})
 	//user
 	router.post('/u/signup',App.hasBody,User.signup)//获取验证码
