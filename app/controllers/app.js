@@ -3,7 +3,7 @@
 var mongoose=require('mongoose')
 var User=mongoose.model('User')
 var robot=require('../service/robot')
-var uuid=require('uuid')
+
 
 //上传图片签名
 exports.signature=function *(next){
@@ -12,8 +12,9 @@ exports.signature=function *(next){
 	var token
 	var key
 	if(cloud==='qiniu'){
-		key=uuid.v4()+'.png'
-		token=robot.getQiniuToken(key)
+		var data=robot.getQiniuToken(body)
+		token=data.token
+		key=data.key
 	}else{
 		token=robot.getCloudinaryToken(body)
 	}
