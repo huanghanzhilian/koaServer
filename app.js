@@ -8,6 +8,7 @@ mongoose.Promise=require('bluebird')//使用bluebird来作为mongodb内置的Pro
 mongoose.connect(db)//链接数据库
 var models_path=path.join(__dirname,'/app/models')//定义模型路径  __dirname当前目录，需要拿到的路径
 require('./app/models/user')
+require('./app/models/video')
 // var walk=function(modelsPath){
 // 	fs
 // 		.readdirSync(modelsPath)
