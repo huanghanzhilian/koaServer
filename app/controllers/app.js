@@ -30,6 +30,7 @@ exports.signature=function *(next){
 //验证post是否无字段 中间件
 exports.hasBody=function *(next){
 	var body =this.request.body||{}  //post参数
+
 	if(!body||Object.keys(body).length===0){
 		this.body={
 			success:false,

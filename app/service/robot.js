@@ -4,6 +4,10 @@ var qiniu = require('qiniu')//七牛
 var config = require('../../config/config')
 var sha1=require('sha1')
 var uuid=require('uuid')
+var cloudinary=require('cloudinary')
+var Promise=require('bluebird')
+
+cloudinary.config(config.cloudinary)
 
 qiniu.conf.ACCESS_KEY = config.qiniu.AK
 qiniu.conf.SECRET_KEY = config.qiniu.SK
@@ -66,3 +70,27 @@ exports.getCloudinaryToken=function(body){
 
 	return token
 }
+
+//将七牛视频上传到 Cloudinary
+exports.uploadToCloudinary=function(url){
+	return new Promise(function(resolve,reject){
+		cloudinary.uploader.upload(url,function(result){
+			if(result&&result.public_id){
+				resolve(result)
+			}else{
+				reject(result)
+			}
+		},{
+			resource_type:'video',
+			folder:'video'
+		})
+	})
+}
+
+
+
+
+
+
+
+
