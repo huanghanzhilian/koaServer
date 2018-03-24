@@ -66,9 +66,12 @@ exports.getCloudinaryToken=function(body){
 		tags='app,audio'
 	}
 	var signature='folder='+folder+'&tags='+tags+'&timestamp='+timestamp+config.cloudinary.api_secret
-  signature=sha1(signature)//加密算法
-
-	return token
+  	signature=sha1(signature)//加密算法
+  	var key=uuid.v4()
+	return {
+		token:signature,
+		key:key
+	}
 }
 
 //将七牛视频上传到 Cloudinary

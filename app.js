@@ -27,12 +27,15 @@ require('./app/models/video')
 // walk(models_path)
 
 var koa=require('koa')
+var cors = require('koa-cors'); 
 var logger=require('koa-logger')//日志中间件
 var session=require('koa-session')//会话中间件
 var bodyParser=require('koa-bodyparser')//解析post过来的数据
 
 //生成服务器实例
 var app=koa()
+
+//app.use(cors()); 
 
 app.keys=['huang']//会话中间件里面  session cookies 里加密的key
 

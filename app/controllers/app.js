@@ -9,21 +9,17 @@ var robot=require('../service/robot')
 exports.signature=function *(next){
 	var body =this.request.body //post参数
 	var cloud=body.cloud
-	var token
-	var key
+	var data
+
+
 	if(cloud==='qiniu'){
-		var data=robot.getQiniuToken(body)
-		token=data.token
-		key=data.key
+		data=robot.getQiniuToken(body)
 	}else{
-		token=robot.getCloudinaryToken(body)
+		data=robot.getCloudinaryToken(body)
 	}
 	this.body={
 		success:true,
-		data:{
-			token:token,
-			key:key
-		}
+		data:data
 	}
 }
 
@@ -71,3 +67,8 @@ exports.hasToken=function *(next){
 	//走向下一个中间件
 	yield next
 }
+
+exports.huang=function *(next){
+	this.body='7f5ff77236241c04'
+}
+
