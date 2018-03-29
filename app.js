@@ -9,6 +9,7 @@ mongoose.connect(db)//链接数据库
 var models_path=path.join(__dirname,'/app/models')//定义模型路径  __dirname当前目录，需要拿到的路径
 require('./app/models/user')
 require('./app/models/video')
+require('./app/models/audio')
 // var walk=function(modelsPath){
 // 	fs
 // 		.readdirSync(modelsPath)
@@ -35,7 +36,7 @@ var bodyParser=require('koa-bodyparser')//解析post过来的数据
 //生成服务器实例
 var app=koa()
 
-//app.use(cors()); 
+app.use(cors()); 
 
 app.keys=['huang']//会话中间件里面  session cookies 里加密的key
 
@@ -55,4 +56,5 @@ app
 
 //监听端口号
 app.listen(1234)
+//app.listen(80)
 console.log('Listening:1234')

@@ -19,8 +19,9 @@ module.exports=function(){
 
 
 	router.post('/creations/video',App.hasBody,App.hasToken,Creation.video)//视频上传同步后台
+	router.post('/creations/audio',App.hasBody,App.hasToken,Creation.audio)//音频频上传同步后台
 
-	router.get('/auth/assert/lj4S9UiL3rT2b1XVdndYzZbW51FV',App.huang)//视频上传同步后台
+	router.get('/auth/assert/lgXRkZ6XRN098CvJGnmGizB5NMT2',App.huang)//视频上传同步后台
 
 	return router
 }
