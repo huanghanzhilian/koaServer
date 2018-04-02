@@ -16,7 +16,8 @@ var AudioSchema =new Schema({
 		type:ObjectId,//每一个音频文件都是对应视频文件的
 		ref:'Video'//对某一个视频的配音
 	},
-
+	qiniu_video: String,
+  	qiniu_thumb: String,
 	public_id:String,//国外图床
 	detail:Mixed,
 	

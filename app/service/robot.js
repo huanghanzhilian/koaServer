@@ -90,6 +90,20 @@ exports.uploadToCloudinary=function(url){
 	})
 }
 
+exports.saveToQiniu = function(url, key) {
+  var client = new qiniu.rs.Client()
+
+  return new Promise(function(resolve, reject) {
+    client.fetch(url, 'gougouvideo', key, function(err, ret) {
+      if (!err) {
+        resolve(ret)
+      }
+      else {
+        reject(err)
+      }
+    })
+  })
+}
 
 
 
